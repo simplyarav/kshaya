@@ -1,0 +1,6 @@
+﻿select vdisk file="C:\Users\Ravi\OneDrive\Desktop\mock_image.001"
+attach vdisk
+clean
+create partition primary
+format fs=fat32 quick
+assign letter=M

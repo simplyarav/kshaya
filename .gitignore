@@ -1,0 +1,27 @@
+﻿# Dependencies
+node_modules/
+venv/
+.venv/
+env/
+
+# Build outputs
+dist/
+build/
+target/
+*.exe
+*.msi
+
+# Logs & temp
+*.log
+*.sqlite
+*.db
+DEBUG.log
+requests.log
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db

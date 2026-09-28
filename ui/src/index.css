@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@layer base {
+  body, .font-sans, .font-serif, h1, h2, h3, h4, h5, h6, p, a, button, label {
+    font-family: system-ui, sans-serif !important;
+    letter-spacing: 0.02em;
+  }
+  
+  .font-mono, .font-mono *, code, pre {
+    font-family: 'IBM Plex Mono', monospace !important;
+    letter-spacing: normal !important;
+  }
+
+  input:not([type="checkbox"]):not([type="radio"]), textarea {
+    box-shadow: inset 4px 4px 6px rgba(0, 0, 0, 0.3), inset -2px -2px 4px rgba(255, 255, 255, 0.6) !important;
+    background-color: #E2D9C8 !important; /* Slightly darker recessed color */
+    border: 1px solid #BCAFA0 !important;
+    border-radius: 4px !important;
+    font-family: system-ui, sans-serif !important;
+  }
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #EDE6D6; /* Warm beige */
+}
+
+/* Heavy paper/metal texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.2;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='4' stitchTiles='stitch'/%3E%3CcolorMatrix type='matrix' values='1 0 0 0 0%2C 0 1 0 0 0%2C 0 0 1 0 0%2C 0 0 0 0.8 0' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+@layer utilities {
+  .panel-emboss {
+    /* Distinct embossed inset highlights on top/left, sharp drop shadow bottom/right */
+    box-shadow: inset 2px 2px 0px rgba(255, 255, 255, 0.7), 
+                inset -2px -2px 0px rgba(0, 0, 0, 0.2), 
+                6px 6px 0px rgba(0, 0, 0, 0.2);
+    border: 1px solid #D9CFB8;
+  }
+  
+  .btn-skeuomorphic {
+    /* Chunky physical hardware buttons */
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 0%, rgba(0, 0, 0, 0.15) 100%);
+    box-shadow: inset 2px 2px 0px rgba(255, 255, 255, 0.6), 
+                inset -2px -2px 0px rgba(0, 0, 0, 0.4), 
+                4px 4px 0px rgba(0, 0, 0, 0.35);
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0,0,0,0.3);
+  }
+  
+  .btn-skeuomorphic:active, .btn-skeuomorphic:disabled:active {
+    /* Visually clicks down into the panel */
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.6), 
+                inset -1px -1px 0px rgba(255, 255, 255, 0.2),
+                0px 0px 0px rgba(0, 0, 0, 0);
+    transform: translateY(4px);
+  }
+
+  .btn-skeuomorphic:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .folder-tab {
+    position: relative;
+    border-left: 6px solid #7C9473;
+    border-top: 2px solid rgba(255, 255, 255, 0.6);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.3);
+  }
+  
+  .logo-font {
+    font-family: 'Black Ops One', sans-serif !important;
+    text-transform: uppercase;
+  }
+}
+
+@keyframes letter-reveal {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-letter-reveal {
+  animation: letter-reveal 0.1s ease forwards;
+}
+.animated-bg-pattern {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.animated-bg-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: 
+    linear-gradient(rgba(124,148,115, 1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,148,115, 1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.animated-bg-pattern::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100vw; height: 10vh;
+  background: linear-gradient(to bottom, transparent, rgba(124,148,115,1), transparent);
+  animation: scanline 10s linear infinite;
+  opacity: 0.06;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-10vh); }
+  100% { transform: translateY(110vh); }
+}

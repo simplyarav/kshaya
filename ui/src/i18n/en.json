@@ -1,0 +1,9 @@
+{
+  "dashboard": "Dashboard",
+  "sanitisation": "Sanitisation Wizard",
+  "file_cleanup": "File Cleanup",
+  "forensics": "Forensics Workspace",
+  "audit_ledger": "Audit Ledger",
+  "settings": "Settings",
+  "simulation_active": "Simulation Mode Active - No destructive actions will be taken."
+}
